@@ -3,7 +3,7 @@ pipeline {
     environment {
         REGISTRY = "docker.io/sekharchadarasi"
         IMAGE = "nginx-sekhar"
-        DOCKER_CREDENTIALS = "0a59ac1a-c31a-41e0-869c-25dcae7c0878"
+        DOCKER_CREDENTIALS = "b5ac87fc-ea16-4f4c-892c-5f825248b2aa"
     }
     stages {
         stage('Checkout') {
