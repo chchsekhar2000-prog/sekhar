@@ -30,17 +30,17 @@ pipeline {
         }
         stage('Update Deployment') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                    sh '''
-                    git config --global user.email "jenkins@example.com"
-                    git config --global user.name "Jenkins"
-                    git checkout main
-                    sed -i "s|image:.*|image: $REGISTRY/$IMAGE:latest|" k8s/deployment.yaml
-                    git add k8s/deployment.yaml
-                    git commit -m "Update image to latest" || echo "No changes to commit"
-                    git push https://$GIT_USER:$GIT_PASS@github.com/chchsekhar2000-prog/sekhar.git main
-                    '''
-                }
+        withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+            sh '''
+            git config --global user.email "jenkins@example.com"
+            git config --global user.name "Jenkins"
+            git checkout main
+            sed -i "s|image:.*|image: $REGISTRY/$IMAGE:latest|" k8s/deployment.yaml
+            git add k8s/deployment.yaml
+            git commit -m "Update image to latest" || echo "No changes to commit"
+            git push https://$GIT_USER:$GIT_PASS@github.com/chchsekhar2000-prog/sekhar.git main
+            '''
+        }
             }
         }
     }
