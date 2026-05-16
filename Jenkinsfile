@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Update Deployment') {
             steps {
-        withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+        withCredentials([usernamePassword(credentialsId: '77b7246f-09ab-460b-9499-c0fe86f8c234', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
             sh '''
             git config --global user.email "jenkins@example.com"
             git config --global user.name "Jenkins"
