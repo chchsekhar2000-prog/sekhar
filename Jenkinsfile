@@ -38,6 +38,7 @@ pipeline {
             sed -i "s|image:.*|image: $REGISTRY/$IMAGE:latest|" k8s/deployment.yaml
             git add k8s/deployment.yaml
             git commit -m "Update image to latest" || echo "No changes to commit"
+            git pull https://$GIT_USER:$GIT_PASS@github.com/chchsekhar2000-prog/sekhar.git main --rebase
             git push https://$GIT_USER:$GIT_PASS@github.com/chchsekhar2000-prog/sekhar.git main
             '''
         }
